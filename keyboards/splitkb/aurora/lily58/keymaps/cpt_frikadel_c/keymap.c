@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-
+#include "features/layer_lock.h"
 
 #define _LAYER0 0
 #define _LAYER1 1
@@ -7,10 +7,7 @@
 #define _LAYER3 3
 
 enum custom_keycodes {
-    LAYER0 = SAFE_RANGE,
-    LAYER1,
-    LAYER2,
-    LAYER3,
+    LLOCK = SAFE_RANGE,
 };
 
 void keyboard_pre_init_user(void){
@@ -18,6 +15,14 @@ void keyboard_pre_init_user(void){
     // Turn of LED after initialize
     setPinOutput(24);
     writePinHigh(24);
+}
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record){
+
+    if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
+
+    return true;
 }
 
 
@@ -41,7 +46,7 @@ void keyboard_pre_init_user(void){
 [_LAYER2] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-        KC_CAPS, KC_F1,   KC_F3,   KC_F4,   KC_PGUP, KC_HOME,                        KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_NO,   KC_NO,
+        KC_CAPS, KC_F1,   KC_F3,   KC_F4,   KC_PGUP, KC_HOME,                        KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_NO,   LLOCK,
         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_PGDN, KC_END, _______,       _______, KC_PLUS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,
                                    _______, _______, MO(3),  _______,       _______, _______, _______, _______),
 
@@ -50,7 +55,7 @@ void keyboard_pre_init_user(void){
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,          KC_NO,   KC_NO,   KC_NO,   RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,          KC_NO,   LLOCK,   KC_NO,   RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,
                                    _______, _______, _______, _______,      _______, _______, _______, _______)
 
 };
