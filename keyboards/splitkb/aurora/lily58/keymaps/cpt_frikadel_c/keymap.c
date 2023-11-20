@@ -26,6 +26,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record){
 }
 
 
+
  const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_LAYER0] = LAYOUT(
@@ -39,7 +40,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record){
         _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, KC_DEL,
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                          KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
         KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                        KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-        _______, _______, _______, _______, _______, _______, _______,      _______, KC_NO, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
+        _______, _______, _______, _______, _______, _______, KC_PSCR,      _______, KC_NO, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
                                    _______, _______, _______, _______,      _______, MO(3), _______, _______),
 
 
@@ -53,9 +54,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record){
 
 [_LAYER3] = LAYOUT(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,          KC_NO,   LLOCK,   KC_NO,   RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MPLY, KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MPRV, KC_NO,                          KC_NO,   KC_NO,   RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MNXT, KC_NO, KC_NO,          KC_NO,   LLOCK,   KC_NO,   RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,
                                    _______, _______, _______, _______,      _______, _______, _______, _______)
 
 };
